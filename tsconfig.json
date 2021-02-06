@@ -2,7 +2,9 @@
     "extends": "@tsconfig/recommended/tsconfig.json",
 
     "compilerOptions": {
-        "target": "es6"
+        "target": "es6",
+        "noImplicitAny": true,
+        "strictNullChecks": true,
     },
 
     "include": ["src/**/*"],
