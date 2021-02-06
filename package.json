@@ -4,9 +4,9 @@
   "description": "Tool to solve the puzzles from professor layton",
   "main": "index.js",
   "watch": {
-    "tsc": {
+    "webpack": {
       "patterns": [
-        "src/index.html"
+        "src/ts/**"
       ],
       "extensions": "ts"
     },

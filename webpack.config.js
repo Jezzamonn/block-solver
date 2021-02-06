@@ -1,7 +1,7 @@
 const path = require('path');
 
 const client = {
-    entry: './src/js/main',
+    entry: './src/ts/main',
     output: {
         path: path.resolve(__dirname, 'build/js'),
         filename: 'main.bundle.js'
