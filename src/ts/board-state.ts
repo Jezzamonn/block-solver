@@ -104,7 +104,7 @@ export class BoardState {
     let nextPiece = 2;
 
     const board: number[][] = [];
-    for (const row of boardString.split('\n')) {
+    for (const row of boardString.trim().split('\n')) {
       const boardRow: number[] = [];
       const chars = [...row.trim()];
       for (const char of chars) {
@@ -112,6 +112,7 @@ export class BoardState {
           pieceMap[char] = nextPiece;
           nextPiece++;
         }
+        boardRow.push(pieceMap[char]);
       }
       board.push(boardRow);
     }
