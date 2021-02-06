@@ -1,10 +1,13 @@
 const path = require('path');
 
 const client = {
-    entry: './src/js/main.js',
+    entry: './src/js/main',
     output: {
-        path: path.resolve(__dirname, 'build/web/js'),
+        path: path.resolve(__dirname, 'build/js'),
         filename: 'main.bundle.js'
+    },
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.json']
     },
     devtool: 'source-map',
     module: {

@@ -3,7 +3,35 @@
   "version": "0.0.1",
   "description": "Tool to solve the puzzles from professor layton",
   "main": "index.js",
+  "watch": {
+    "tsc": {
+      "patterns": [
+        "src/index.html"
+      ],
+      "extensions": "ts"
+    },
+    "html": {
+      "patterns": [
+        "src/index.html"
+      ],
+      "extensions": "html"
+    },
+    "sass": {
+      "patterns": [
+        "src/css/**"
+      ],
+      "extensions": "scss"
+    }
+  },
   "scripts": {
+    "reload": "reload -b -d build",
+    "watch": "npm-watch",
+    "webpack": "webpack",
+    "sass": "mkdir -p build/css/ && sass src/css/styles.scss build/css/styles.css",
+    "html": "mkdir -p build/ && rsync -a --delete src/index.html build/index.html",
+    "static": "mkdir -p build/static && rsync -a --delete ../static/ build/static",
+    "build": "npm-run-all --parallel webpack sass html",
+    "clean": "rm -rf build/*",
     "test": "mocha"
   },
   "author": "",
@@ -11,13 +39,18 @@
   "devDependencies": {
     "@babel/cli": "^7.12.13",
     "@babel/core": "^7.12.13",
-    "@babel/preset-env": "^7.12.13",
+    "@babel/preset-typescript": "^7.12.13",
+    "@tsconfig/recommended": "^1.0.1",
     "babel-loader": "^8.2.2",
     "chai": "^4.3.0",
     "mocha": "^8.2.1",
+    "npm-run-all": "^4.1.5",
     "npm-watch": "^0.7.0",
     "reload": "^3.1.1",
+    "sass": "^1.32.6",
+    "typescript": "^4.1.3",
     "webpack": "^5.21.0",
     "webpack-cli": "^4.5.0"
-  }
+  },
+  "dependencies": {}
 }
