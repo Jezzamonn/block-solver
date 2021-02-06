@@ -92,4 +92,36 @@ export class BoardState {
       lastMovedPiece: pieceIndex,
     });
   }
+
+  static createFromString(boardString: string): BoardState {
+    if (boardString.length == 0) {
+      throw new Error('Board string must have a length > 0');
+    }
+    const pieceMap: {[key: string]: number} = {
+      ' ': 0,
+      '#': 1,
+    }
+    let nextPiece = 2;
+
+    const board: number[][] = [];
+    for (const row of boardString.split('\n')) {
+      const boardRow: number[] = [];
+      const chars = [...row.trim()];
+      for (const char of chars) {
+        if (!(char in pieceMap)) {
+          pieceMap[char] = nextPiece;
+          nextPiece++;
+        }
+      }
+      board.push(boardRow);
+    }
+    // Quick length sanity check
+    for (let i = 1; i < board.length; i++) {
+      if (board[i].length != board[0].length) {
+        throw new Error('Invalid board size. All rows must be equal length.');
+      }
+    }
+
+    return new BoardState({board});
+  }
 }
