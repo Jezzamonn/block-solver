@@ -56,16 +56,18 @@ G LL P
             return;
         }
 
-        // feels nicer if we square this I think
-        sliderPos = sliderPos * sliderPos;
+        // Transform to exponential from 0 to 1
+        sliderPos = Math.pow(2, sliderPos) - 1;
 
-        // 1 -> 20 ms
-        // 0 -> ∞ ms
-        const period = 20 / sliderPos;
+        // 1 -> 0.01 s (10 ms)
+        // 0 -> ∞ s
+        const period = 0.01 / sliderPos;
         currentInterval = window.setInterval(() => {
             board = makeRandomMove(board);
             boardRenderer.update(board);
-        }, period);
+        }, 1000 * period);
+
+        document.documentElement.style.setProperty('--slide-speed', period + 's');
     });
 }
 

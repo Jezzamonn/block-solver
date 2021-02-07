@@ -1,3 +1,7 @@
+:root {
+    --slide-speed: 0.1s;
+}
+
 html {
     background-color: #445;
 
@@ -36,9 +40,7 @@ body {
 
 .piece {
     position: absolute;
-    width: var(--block-width);
-    height: var(--block-height);
-    transition: top 0.1s, left 0.1s;
+    transition: top var(--slide-speed), left var(--slide-speed);
 }
 
 .sub-piece {
