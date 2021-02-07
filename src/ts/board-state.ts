@@ -33,14 +33,23 @@ export class BoardState {
     this.#pieces = null;
   }
 
-  isInRange(pos: Point): boolean {
-    if (this.board.length == 0) return false;
+  get width() {
+    if (this.board.length == 0) {
+      return 0;
+    }
+    return this.board[0].length;
+  }
 
+  get height() {
+    return this.board.length;
+  }
+
+  isInRange(pos: Point): boolean {
     return (
       pos.x >= 0 &&
-      pos.x < this.board[0].length &&
+      pos.x < this.width &&
       pos.y >= 0 &&
-      pos.y < this.board.length
+      pos.y < this.height
     );
   }
 
