@@ -101,7 +101,7 @@ G LL P
             updateBoardElements(board);
             break;
         }
-    }, 200);
+    }, 20);
 }
 
 window.onload = init;
