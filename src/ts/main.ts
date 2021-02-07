@@ -56,18 +56,22 @@ G LL P
             return;
         }
 
-        // Transform to exponential from 0 to 1
-        sliderPos = Math.pow(2, sliderPos) - 1;
+        // Trying to create the following
+        // 0 -> ∞ s -> 0 Hz
+        // 0.1 -> 0.3s -> 3 Hz -> 6%
+        // 0.5 -> 0.1s -> 10 Hz -> 20%
+        // 1 -> 0.02 s (10 ms) -> 50 Hz -> 100%
+        const freq = 49 * Math.pow(sliderPos, 3) + 1;
+        const period = 1 / freq;
 
-        // 1 -> 0.01 s (10 ms)
-        // 0 -> ∞ s
-        const period = 0.01 / sliderPos;
         currentInterval = window.setInterval(() => {
             board = makeRandomMove(board);
             boardRenderer.update(board);
         }, 1000 * period);
 
-        document.documentElement.style.setProperty('--slide-speed', period + 's');
+        const animTime = Math.max(0.8 * period, 0.1);
+
+        document.documentElement.style.setProperty('--slide-speed', animTime + 's');
     });
 }
 
