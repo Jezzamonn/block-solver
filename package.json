@@ -39,6 +39,7 @@
   "devDependencies": {
     "@babel/cli": "^7.12.13",
     "@babel/core": "^7.12.13",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
     "@babel/preset-typescript": "^7.12.13",
     "@tsconfig/recommended": "^1.0.1",
     "@types/chai": "^4.2.14",

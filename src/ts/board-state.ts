@@ -131,7 +131,10 @@ export class BoardState {
     let nextPiece = 2;
 
     const board: number[][] = [];
-    for (const row of boardString.trim().split("\n")) {
+    for (const row of boardString.split("\n")) {
+      if (row.length == 0) {
+        continue;
+      }
       const boardRow: number[] = [];
       const chars = [...row];
       for (const char of chars) {
@@ -146,7 +149,9 @@ export class BoardState {
     // Quick length sanity check
     for (let i = 1; i < board.length; i++) {
       if (board[i].length != board[0].length) {
-        throw new Error("Invalid board size. All rows must be equal length.");
+        throw new Error(
+          `Invalid board size. All rows must be equal length. ` +
+          `Lengths = ${board.map(row => row.length)}`);
       }
     }
 
