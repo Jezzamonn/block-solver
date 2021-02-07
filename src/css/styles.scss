@@ -1,16 +1,14 @@
-:root {
-    --block-width: 10%;
-    --block-height: 10%;
-}
-
 html {
     background-color: #445;
+
+    color: white;
+    font-family: sans-serif;
 }
 
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     width: 100vw;
     height: 100vh;
@@ -21,8 +19,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90vmin;
-    height: 90vmin;
+    width: 80vmin;
+    height: 80vmin;
     position: relative;
 }
 
@@ -51,4 +49,12 @@ body {
     border: 2px solid rgba(0, 0, 0, 20%);
     border-radius: 5px;
     background-color: pink;
+}
+
+.controls {
+    display: flex;
+}
+
+.control-label {
+    margin-right: 8px;
 }
